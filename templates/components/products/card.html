@@ -8,7 +8,7 @@
                 </div>
             {{else if theme_settings.product_sale_badges '===' 'topleft'}}
                 <div class="sale-flag-side">
-                    <span class="sale-text">Sale</span>
+                    <span class="sale-text">- {{ceil (multiply (divide (subtract price.non_sale_price_without_tax.value price.sale_price_without_tax.value) price.non_sale_price_without_tax.value) 100)}} %</span>
                 </div>
             {{else if theme_settings.product_sale_badges '===' 'burst'}}
                 <div class="starwrap">
