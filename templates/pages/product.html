@@ -1,0 +1,38 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{#partial "page"}}
+<script src="{{ cdn 'assets/js/jquery-3.4.0.min.js'}}"></script>
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{#each product.shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+    <div itemscope itemtype="http://schema.org/Product">
+        {{> components/products/product-view schema=true  }}
+
+        {{{region name="product_below_content"}}}
+        
+            <div id="stamped-main-widget" 
+data-widget-style="standard"
+data-product-id="{{ product.id }}" 
+data-name="{{ product.title }}" 
+data-url="{{ product.url }}" 
+data-image-url="{{getImage product.main_image 'product'}}"> 
+</div>
+        
+        {{> components/products/tabs}}
+    </div>
+
+{{/partial}}
+{{> layout/base}}
+
